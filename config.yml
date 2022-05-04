@@ -1,0 +1,37 @@
+language: en
+pipeline:
+- name: WhitespaceTokenizer
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
+- name: CountVectorsFeaturizer
+- name: CountVectorsFeaturizer
+  analyzer: char_wb
+  min_ngram: 1
+  max_ngram: 4
+- name: DIETClassifier
+  epochs: 100
+- name: CRFEntityExtractor  # USING BOTH DIETCLASSIFIER AND CRF AT THE SAME TIME COULD CAUSE PROBLEMS (COULD NOT FIND INFO ABOUT IF WE SHOULD USE ONLY ONE OR WE CAN USE BOTH), but for now it works
+  epochs: 100
+- name: EntitySynonymMapper
+- name: ResponseSelector
+  epochs: 100
+
+# Standard policy heirarchy (higher number = higher priority) 
+#  5. FormPolicy
+#  4. FallbackPolicy and TwoStageFallbackPolicy
+#  3. MemoizationPolicy and AugmentedMemoizationPolicy
+#  2. MappingPolicy
+#  1. TEDPolicy, EmbeddingPolicy, KerasPolicy, and SklearnPolicy
+policies:
+- name: AugmentedMemoizationPolicy # changed to augmented
+  max_history: 3
+- name: TEDPolicy
+  max_history: 1
+  epochs: 100
+- name: MappingPolicy
+- name: FormPolicy
+- name: FallbackPolicy 
+  nlu_threshold: 0.2  # reduced from 0.4
+  ambiguity_threshold: 0.05 # reduced from 0.1
+  core_threshold: 0.2 # reduced from 0.4
+  fallback_action_name: "action_default_fallback"

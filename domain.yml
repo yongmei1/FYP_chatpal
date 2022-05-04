@@ -1,0 +1,1368 @@
+session_config:
+  session_expiration_time: 1051200
+  carry_over_slots_to_new_session: true
+intents:
+- explain_who
+- nutritionRating
+- ready
+- redo_onboarding
+- health
+- moreInfo
+- healthTopic
+- amountTimeMins
+- show
+- finished
+- continueStop
+# - passion
+- deny
+- meaning
+- change
+# - passionResult
+- affirm
+- engagement
+- amountTimeHrs
+- greet
+- goodbye
+- user_name
+- ageRange
+- country
+- gender
+- skip
+- chosenPermah
+- relationships
+- accomplishment
+- mood_great
+- emotion
+- feeling_happy
+- feeling_unhappy
+- feeling_neutral
+- grateful
+- changeChoice
+- strength
+- out_of_scope
+- who_intent
+- whoChoices
+- completeScale
+- intent_restart
+- exit
+entities:
+- selectedPermah
+- ageRange
+- amount_physical
+- country
+- firstStrength
+- gender
+- health_topic
+- name
+- nutritionRating
+# - passion
+# - passionResult
+- meaningChange
+- permah
+- secondStrength
+- amountSleep
+- who_entity
+- who_cheerful
+- who_calm
+- who_active
+- who_fresh
+- who_filled
+# - strength
+- gratefulReasonA
+- gratefulReasonB
+slots:
+  ageRange:
+    type: unfeaturized
+  amountSleep:
+    type: unfeaturized
+  amount_physical:
+    type: unfeaturized
+  country:
+    type: unfeaturized
+  firstStrength:
+    type: unfeaturized
+  gender:
+    type: unfeaturized
+  gratefulReasonA:
+    type: unfeaturized
+  gratefulReasonB:
+    type: unfeaturized
+  health_topic:
+    type: categorical
+    values:
+    - sleep
+    - physical activity
+    - nutrition
+  meaningChange:
+    type: unfeaturized
+  name:
+    type: unfeaturized
+    initial_value: "My Friend"
+  nutritionRating:
+    type: unfeaturized
+  passion:
+    type: unfeaturized
+  passionResult:
+    type: unfeaturized
+  secondStrength:
+    type: unfeaturized
+  who_active:
+    type: unfeaturized
+  who_calm:
+    type: unfeaturized
+  who_cheerful:
+    type: unfeaturized
+  who_filled:
+    type: unfeaturized
+  # who_form:
+  #   type: unfeaturized
+  who_fresh:
+    type: unfeaturized
+  selectedPermah:
+    type: categorical
+    values:
+      - Positive Emotion
+      - Engagement
+      - Relationships
+      - Meaning
+      - Accomplishment
+      - Health
+responses:
+  utter_under_18_response:
+  - text: Sorry, you cannot use this chatbot as it is for people over 18 years old and is part of a research study for adults.
+  utter_exit:
+  - text: "Chat soon, Chat Pal."
+  utter_goodbye:
+  - text: "Did you enjoy our chat? Tell me how I can improve our conversations by\
+      \ clicking [here](https://ulsterhealth.eu.qualtrics.com/jfe/form/SV_1zUwXdmPOqMNJch).\n\
+      Chat soon, Chat Pal.\nIf you want to start again, press the button below."
+    buttons:
+      - title: Show Menu
+        payload: /show
+  utter_meaning_skip_story:
+  - text: Not this time, let's get on with it so.
+  utter_ask_who_choices:
+  - buttons:
+    - payload: /explain_who
+      title: Learn more about the WHO Wellbeing Scale
+    - payload: /completeScale
+      title: Complete the WHO Wellbeing Scale
+    - payload: /show
+      title: Go Back to Main Menu
+    text: What would you like to do?
+  utter_who_explain:
+  - text: The World Health Organisation Well Being Index is a short assessment of
+      your overall perceived sense of wellbeing. You will be asked to consider how
+      well 5 statements have related to you over the past two weeks. For each statement,
+      you will be asked to respond on a scale of 0 (none of the time) to 5 (all of
+      the time). This will generate a score of between 0-25, which is multiplied by
+      4 to convert your score to a value between 0 (absence of wellbeing) to 100 (maximal
+      wellbeing)
+  utter_who_more_info:
+  - text: "Further information about the scale can be found at\nhttps://doi.org/10.1159/000376585\n\
+      and\nhttps://www.psykiatri-regionh.dk/who-5/about-the-who-5/Pages/default.aspx"
+  utter_who_score_exit:
+  - text: 'Please remember I am only a machine and sometimes I do not have the capacity
+      to recognise everything, or fully understand the concept of wellbeing. If you
+      are in a crisis, or if you are worried about any aspect of your wellbeing, please
+      contact a helpline or support service. You might find a crisis helpline or support
+      service for your area on this website [here](http://chatpal.interreg-npa.eu/crisis-resource-helplines/)'
+  utter_exit_best_luck:
+  - text: Super! Best of luck with it!
+  utter_ask_know_why:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Do you want to know why?
+  utter_ask_hear_more:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Would you like to hear more? 
+  utter_accomplishment_action_positive_response:
+  - text: 👏. That’s great. Remember all of those small wins will take you a little
+      step closer to where you want to be!
+  utter_accomplishment_exit_point:
+  - text: "Ok, let's finish by considering a few points that might help you build\
+      \ accomplishment\n- Set goals that will lead to small wins and celebrate these\
+      \ on the way to your best possible self\n- See FAILing as your “First Attempt\
+      \ in Learning” if you don't succeed try again \n- Be kind to yourself on your\
+      \ journey. When you hear yourself saying \"I can't\" say \"I can't YET\""
+  utter_accomplishment_explain_first_task_a:
+  - text: Consider all of the relevant areas of your life, such as your job, relationships,
+      hobbies, and health. What would happen in these areas of your life in your best
+      possible future? Focus on a year from now, what does {name} look like, feel
+      like
+  utter_accomplishment_explain_first_task_b:
+  - text: Describe what this possible self on the page in front of you. In an ideal
+      world what would {name} look like?
+  utter_accomplishment_explain_second_task:
+  - text: Another way to help us to stay positive and on track is to break our goals
+      into small chunks. I like to call them small wins!
+  utter_accomplishment_give_exercise_advice:
+  - text: When doing this exercise I like to think of the latest version of the Iphone.
+      There is never a fixed point but always the opportunity to do things better.
+      No matter where we are, we always have an opportunity to make progress and to
+      keep improving. What would the best version of yourself look like? Take some
+      more time now to think about this! Have fun with it!
+  utter_accomplishment_intro:
+  - text: Great, you picked accomplishment, so we'll talk about that. One simple exercise
+      to help us to focus on what we want to accomplish is something called the 'best
+      possible self' exercise.
+  utter_accomplishment_love_energy:
+  - text: Great! I love your energy to try something different.
+  utter_accomplishment_super:
+  - text: Super! {name}.
+  utter_ask_about_attitude:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Did you know that having an attitude for gratitude can be a great way to
+      make you feel good about yourself?
+  utter_ask_accomplishment_second_task:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Would you like to think about this now?
+  utter_ask_accomplishment_think_action:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Can you think of one small action you could take today or tomorrow that
+      would take you one step closer to your best possible self?
+  utter_ask_ageRange:
+  - buttons:
+    - payload: '/ageRange{"ageRange": "<18"}'
+      title: Under 18
+    - payload: '/ageRange{"ageRange": "18-24"}'
+      title: 18-24
+    - payload: '/ageRange{"ageRange": "25-34"}'
+      title: 25-34
+    - payload: '/ageRange{"ageRange": "35-44"}'
+      title: 35-44
+    - payload: '/ageRange{"ageRange": "45-54"}'
+      title: 45-54
+    - payload: '/ageRange{"ageRange": "55-64"}'
+      title: 55-64
+    - payload: '/ageRange{"ageRange": ">65"}'
+      title: Over 65
+    text: What is your age?
+  utter_ask_all_good:
+  - buttons:
+    - payload: /affirm
+      title: Yes, all good
+    - payload: /deny
+      title: No, I'm having some trouble
+    text: (after 2 minutes). Just checking in to see how you are doing? Is it going
+      ok?
+  utter_ask_consent:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Would this be ok?
+  utter_ask_continue:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Would you like to continue?
+  utter_ask_country:
+  - buttons:
+    - payload: '/country{"country": "Ireland"}'
+      title: Ireland
+    - payload: '/country{"country": "Scotland"}'
+      title: Scotland
+    - payload: '/country{"country": "Northern Ireland"}'
+      title: Northern Ireland
+    - payload: '/country{"country": "Finland"}'
+      title: Finland
+    - payload: '/country{"country": "Sweden"}'
+      title: Sweden
+    - payload: '/country{"country": "Other"}'
+      title: Other
+    - payload: '/country{"country": "Prefer not to say"}'
+      title: Prefer not to say
+    text: Where are you from?
+  utter_ask_details:
+  - buttons:
+    - payload: /affirm
+      title: Sure
+    - payload: /skip
+      title: Skip
+    text: Awesome, {name}, it is great to e-meet you. Who knew computers and people
+      would converse - anyway - can we ask you a few questions (gender, country)?
+      This is to help us understand our user base for research purposes but no worries
+      if you want to skip this bit.
+  utter_ask_feeling:
+  - buttons:
+    - payload: /feeling_happy
+      title: Very Happy
+    - payload: /feeling_happy
+      title: Happy
+    - payload: /feeling_neutral
+      title: Neutral
+    - payload: /feeling_unhappy
+      title: Unhappy
+    - payload: /feeling_unhappy
+      title: Very Unhappy
+    text: Which of these do you feel like right now?
+  utter_ask_firstStrength:
+  - buttons:
+    - payload: /strength{"firstStrength":"creativity"}
+      title: Creativity
+    - payload: /strength{"firstStrength":"love of learning"}
+      title: Love of Learning
+    - payload: /strength{"firstStrength":"hope"}
+      title: Hope
+    - payload: /strength{"firstStrength":"honesty"}
+      title: Honesty
+    - payload: /strength{"firstStrength":"fairness"}
+      title: Fairness
+    - payload: /strength{"firstStrength":"curiosity"}
+      title: Curiosity
+    - payload: /strength{"firstStrength":"kindness"}
+      title: Kindness
+    - payload: /strength{"firstStrength":"teamwork"}
+      title: Teamwork
+    - payload: /strength{"firstStrength":"prudence"}
+      title: Prudence
+    - payload: /strength{"firstStrength":"perseverence"}
+      title: Perseverance
+    - payload: /strength{"firstStrength":"leadership"}
+      title: Leadership
+    - payload: /strength{"firstStrength":"humour"}
+      title: Humour
+    text: 'From the following list choose a character strength you used at this time:'
+  utter_ask_gender:
+  - buttons:
+    - payload: '/gender{"gender": "Male"}'
+      title: Male
+    - payload: '/gender{"gender": "Female"}'
+      title: Female
+    - payload: '/gender{"gender": "Other"}'
+      title: Other
+    - payload: '/gender{"gender": "Prefer not say"}'
+      title: Prefer not to say
+    text: What is you gender?
+  utter_ask_get_happier:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: It makes me happy when other people are happy. How about we get happier
+      together?
+  utter_ask_get_pen:
+  - buttons:
+    - payload: /affirm
+      title: Yes, I am ready
+    text: Get a pen and paper ready and I will take you through it
+  utter_ask_got_one:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Have you got one?
+  utter_engagement_not_got_one:
+  - text: No worries maybe think about a sports person who is performing at their best and they are completely focused on the task.
+  # utter_ask_health_topic:
+  # - buttons:
+  #   - payload: '/healthTopic{"health_topic": "Sleep"}'
+  #     title: Sleep
+  #   - payload: '/healthTopic{"health_topic": "Physical Activity"}'
+  #     title: Physical Activity
+  #   - payload: '/healthTopic{"health_topic": "Nutrition"}'
+  #     title: Nutrition
+  #   text: Are you interested in hearing/talking/thinking more about any of these right now?
+  utter_ask_hear_questions:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Would you like to hear them?
+  utter_ask_heated_conversation:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Have you ever had a heated conversation with someone and regretted saying
+      something?
+  utter_ask_in_mind:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Do you have something in mind?
+  utter_ask_know_more:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Would you like to know more?
+  utter_ask_make_sense:
+  - buttons:
+    - payload: /affirm
+      title: I get the idea
+    - payload: /deny
+      title: Not sure what you talking about.
+    text: Does that make sense?
+  utter_ask_meaning_apply_to_me:
+  - buttons:
+    - payload: /affirm
+      title: 'Exactly what I was thinking. '
+    - payload: /deny
+      title: No, I like that story and see how it relates to me
+    text: You might be asking, well how does this apply to me?
+  utter_ask_meaningChange:
+  - text: Take a moment to consider one small change that you will make which will allow you to
+      spend more time on what you are passionate about and what has meaning to you.
+  utter_ask_meaning_list:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Ok, make a list of other passions/interests on a piece of paper.
+  utter_ask_passion:
+  - text: "I am passionate about ________________.\nPlease type answer"
+  utter_ask_passionResult:
+  - text: "When you engage in {passion} it makes you feel ________________.\nPlease type answer"
+  utter_ask_meaning_story:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: The old fable about the three men breaking rocks highlights the importance
+      of meaning to us. Would you like to hear it?
+  utter_ask_name:
+  - text: What should I call you? Please tell me your first name. No need for full
+      names… just to keep it anonymous so I can’t identify you. If you don't want
+      to provide a name then please include a preferred fake name or nick name.
+  utter_ask_neutral_to_happy:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Ok, you are one step away from being happier so let's see can we try something
+      together. Would you like to try it?
+  utter_ask_next_task:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: (after 4 minutes) I hope that you have had fun thinking about all that you
+      can achieve! Would you like to try something else that might help you reach
+      your best possible self?
+  utter_nutrition_hard:
+  - text: But it's hard when our daily routines have completely changed! The main
+      thing is to try to keep it manageable! Rome wasn't built in a day!
+  utter_ask_nutrition_examples:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Great! 👏 Would you like some examples to help you think of one?
+  utter_nutrition_positive_exit:
+  - text: Super, give it a try and see how it goes. You might surprise yourself!
+  utter_nutrition_negative_exit:
+  - text: That’s ok, things are hard right now for everyone - there has been so much
+      to think about. But it could be something to consider for the future. It could
+      make all the difference!
+  utter_nutrition_not_hear_response:
+  - text: No worries, let’s talk about this again soon!
+  utter_ask_nutrition_commit_diet:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: So do you think you could think about your own diet and commit to one small
+      change for tomorrow?
+  utter_ask_nutritionRating:
+  - buttons:
+    - payload: '/nutritionRating{"nutritionRating": "good rating"}'
+      title: Very Good
+    - payload: '/nutritionRating{"nutritionRating": "good rating"}'
+      title: Good
+    - payload: '/nutritionRating{"nutritionRating": "fair or poor rating"}'
+      title: Fair
+    - payload: '/nutritionRating{"nutritionRating": "fair or poor rating"}'
+      title: Poor
+    - payload: '/nutritionRating{"nutritionRating": "fair or poor rating"}'
+      title: Very Poor
+    text: In general, how would you rate your nutrition on most days?
+  utter_ask_permah:
+  - buttons:
+    - payload: '/emotion{"selectedPermah":"Positive Emotion"}'
+      title: Positive Emotion
+    - payload: '/engagement{"selectedPermah":"Engagement"}'
+      title: Engagement
+    - payload: '/relationships{"selectedPermah":"Relationships"}'
+      title: Relationships
+    - payload: '/meaning{"selectedPermah":"Meaning"}'
+      title: Meaning
+    - payload: '/accomplishment{"selectedPermah":"Accomplishment"}'
+      title: Accomplishment
+    - payload: '/health{"selectedPermah":"Health"}'
+      title: Health      
+    - payload: /who_intent
+      title: Well-being scale
+    - payload: /redo_onboarding
+      title: Redo onboarding
+    text: Which would you like to learn about first?
+  utter_ask_permah_short:
+  - buttons:
+    - payload: '/emotion{"selectedPermah":"Positive Emotion"}'
+      title: Positive Emotion
+    - payload: '/engagement{"selectedPermah":"Engagement"}'
+      title: Engagement
+    - payload: '/relationships{"selectedPermah":"Relationships"}'
+      title: Relationships
+    - payload: '/meaning{"selectedPermah":"Meaning"}'
+      title: Meaning
+    - payload: '/accomplishment{"selectedPermah":"Accomplishment"}'
+      title: Accomplishment
+    - payload: '/health{"selectedPermah":"Health"}'
+      title: Health      
+    - payload: /who_intent
+      title: Well-being scale
+    - payload: /redo_onboarding
+      title: Redo onboarding
+    - payload: /goodbye
+      title: Need to go, chat soon
+    text: Which would you like to learn about next?
+  utter_ask_physical_ideas:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: I have a few ideas of how you could be more physically active. Would you
+      like to hear them?
+  utter_ask_physical_intensity:
+  - buttons:
+    - payload: /moreInfo
+      title: Tell me
+    text: Do you know what moderate to vigorous intensity means?
+  utter_ask_physical_per_day:
+  - buttons:
+    - payload: /amountTimeMins{"amount_physical":"60+ mins"}
+      title: 60+ mins per day
+    - payload: /amountTimeMins{"amount_physical":"30-60 mins"}
+      title: 30-60 mins per day
+    - payload: /amountTimeMins{"amount_physical":"10-30 mins"}
+      title: 10-30 mins per day
+    - payload: /amountTimeMins{"amount_physical":"<10 mins"}
+      title: less than 10 mins per day
+    text: Sometimes it's important to consider where you are currently at. On an average
+      day, how much physical activity/exercise do you engage in?
+  utter_ask_physical_try_one_idea:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Is there one of these that you could try today?
+  utter_ask_ready_for_o:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    text: Are you ready for the O?
+  utter_ask_relationships_can_do_something:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /moreInfo
+      title: Like what?
+    text: Is there anything you can do for them?
+  utter_ask_relationships_hear_another_way:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Would you like to hear about another way to create positive relationships?
+  utter_ask_relationships_tip:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: That's OK. Would you like to hear about a handy tip to keep calm whenever
+      you are feeling frustrated or angry?
+  utter_emotion_sad_response:
+  - text: Sorry to hear you are feeling down.
+  utter_emotion_cannot_recognise_everything:
+  - text: 'As I am only a machine, sometimes I do not have the capacity to recognise everything, or fully understand the concept of emotions. 
+  If you are in a crisis, or if you are worried about any aspect of your wellbeing, please contact a helpline or support service. You might find a crisis helpline or support service for your 
+  area on this [website](http://chatpal.interreg-npa.eu/crisis-resource-helplines/)'
+  utter_ask_sad_to_happy:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Would you like to hear something that might make you feel happier?
+  utter_ask_secondStrength:
+  - buttons:
+    - payload: /strength{"secondStrength":"creativity"}
+      title: Creativity
+    - payload: /strength{"secondStrength":"love of learning"}
+      title: Love of Learning
+    - payload: /strength{"secondStrength":"hope"}
+      title: Hope
+    - payload: /strength{"secondStrength":"honesty"}
+      title: Honesty
+    - payload: /strength{"secondStrength":"fairness"}
+      title: Fairness
+    - payload: /strength{"secondStrength":"curiosity"}
+      title: Curiosity
+    - payload: /strength{"secondStrength":"kindness"}
+      title: Kindness
+    - payload: /strength{"secondStrength":"teamwork"}
+      title: Teamwork
+    - payload: /strength{"secondStrength":"prudence"}
+      title: Prudence
+    - payload: /strength{"secondStrength":"perseverence"}
+      title: Perseverance
+    - payload: /strength{"secondStrength":"leadership"}
+      title: Leadership
+    - payload: /strength{"secondStrength":"humour"}
+      title: Humour
+    - payload: /deny{"secondStrength":"none"}
+      title: No
+    text: Is there another strength from the list that you used when you felt completely engaged in something?
+  utter_ask_amountSleep:
+  - buttons:
+    - payload: '/amountTimeHrs{"amountSleep": "6 hours or less "}'
+      title: Less than 5 hours
+    - payload: '/amountTimeHrs{"amountSleep": "6 hours or less "}'
+      title: 5 hours
+    - payload: '/amountTimeHrs{"amountSleep": "6 hours or less "}'
+      title: 6 hours
+    - payload: '/amountTimeHrs{"amountSleep": "7 hours or more"}'
+      title: 7 hours
+    - payload: '/amountTimeHrs{"amountSleep": "7 hours or more"}'
+      title: 8 hours
+    - payload: '/amountTimeHrs{"amountSleep": "7 hours or more"}'
+      title: 9 hours or more
+    text: On most nights, how much sleep do you get?
+  utter_ask_small_change:
+  - buttons:
+    - payload: /changeChoice
+      title: A
+    - payload: /changeChoice
+      title: B
+    - payload: /changeChoice
+      title: C
+    - payload: /changeChoice
+      title: D
+    text: I believe in small manageable changes so which of the above can you do tomorrow?
+  utter_ask_someone_could_benefit_act:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Is there someone in your life that you think could benefit from a small
+      act of kindness?
+  utter_ask_something_can_try:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Do you think that is something you could try?
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Do you think you could try this?
+  utter_ask_something_consider:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Is this something you could consider today?
+  utter_ask_consider_change:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Would you consider making one small change for tomorrow?
+  utter_ask_tiny_habits:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Chat Pal believes in tiny habits. Is there one of these that you could try tonight?
+  utter_ask_to_know_behaviour_change:
+  - buttons:
+    - payload: /affirm
+      title: Absolutely
+    - payload: /deny
+      title: No just tell me about mental wellbeing
+    text: This bot is all about supporting behaviour change. Sounds kinda scientific.
+      Can I explain?
+  utter_ask_to_know_one_way:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Would you like to hear about one way?
+  utter_ask_try_one_more:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Thanks for sharing that {name}, Do you want to try one more?
+  utter_ask_want_to_hear:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Do you want to hear it?
+  utter_ask_would_like_to_try:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Would you like to try it?
+  utter_chosen_permah:
+  - text: Thank you! You chose {permah}
+  utter_consent_negative_response:
+  - text: That's fine. We won't collect any anonymous data during your session.
+  utter_consent_positive_response:
+  - text: "Excellent. Just remember that I am only a computer and have very little\
+      \ intelligence so I can't provide that much help - so if you are in a crisis\
+      \ then please consider contacting a crisis helpline. You might find a crisis\
+      \ helpline for your area on this website: http://chatpal.interreg-npa.eu/crisis-resource-helplines/"
+  utter_default:
+  - buttons:
+    - payload: /show
+      title: Back to Main Menu
+    text: "Sorry, I didn't understand that. I am only a machine and the humans never\
+      \ gave me the ability to respond to this. Always remember that if you are in\
+      \ a crisis, then please consider contacting a crisis helpline. You might find\
+      \ a crisis helpline for your area on this website: http://chatpal.interreg-npa.eu/crisis-resource-helplines/"
+  utter_emotion_exit_point:
+  - text: I really like focusing on the positives in my life and it makes me feel
+      good. Hope you got something from it. Remember you can always do this at any
+      time of the day so give it a go when you can and write down what you are grateful
+      for. I really like this quote from Amy Collette "Gratitude is a powerful catalyst
+      for happiness. It’s the spark that lights a fire of joy in your soul."
+  utter_emotion_get_happier_response:
+  - text: Super, let's bring out happiness to the next level.
+  - text: Great, let's try something!!!
+  - text: Love your enthusiasm!
+  utter_emotion_grateful_reason_a:
+  - text: I am grateful to have someone to talk to as it gives me the chance to learn.
+  utter_emotion_grateful_reason_b:
+  - text: I am grateful for the ability to connect with others to share my knowledge
+      around something that I feel is really important.
+  utter_emotion_grateful_response:
+  - text: Really like to hear that, thank you for sharing. There are a few other questions
+      that might give us positive emotions and make us happier.
+  utter_emotion_intro:
+  - text: 'OK, you picked positive emotion, so we’ll talk about that. I like this
+      quote from ZIg Ziglar: "Positive thinking will let you do everything better
+      than negative thinking will."'
+  utter_emotion_no_questions_response:
+  - text: Not to worry, it might work for you next time.
+  utter_emotion_not_get_happier_response:
+  - text: That's Ok, sometimes we are not in the mood for things. We might come back
+      to the positive emotions another time.
+  utter_emotion_not_trying_again:
+  - text: Well thanks for sharing something with me.
+  utter_emotion_start_task:
+  - text: 👏. Let's try it, I’ll go first.
+  utter_engagement_choice_response:
+  - text: Great, after you give this a go, maybe try each one on a different day of
+      the week and see how it goes.
+  utter_engagement_energise_a:
+  - text: Ok, think of anytime in your life when you were really engaged, energised
+      and excited
+  utter_engagement_energise_b:
+  - text: When we work to our strengths we create purpose and meaning.
+  utter_engagement_energise_c:
+  - text: The challenge is to know your strengths, work to them and reshape your life
+      around them.
+  utter_engagement_exit_point:
+  - text: That's ok maybe another time will be the right time to give this a go.
+  utter_engagement_give_another_example:
+  - text: No problem, here's another example. Take a minute to think of your favourite
+      musician.
+  utter_engagement_giving_go:
+  - text: Great, love the way you are giving this a go.
+  utter_engagement_intro:
+  - text: Awesome, you picked engagement, so we'll talk about that. Engagement
+      has been described as ‘the loss of self-consciousness during an absorbing activity’, 
+      ‘time-stopping’, ‘flow’ or ‘being one with the music’. This "Flow" is achieved
+      when you have the combination of a challenging task and the opportunity to use your
+      skills/strengths.
+  utter_engagement_meaning_purpose:
+  - text: To achieve engagement and a sense of purpose you need to be completely
+      immersed in what you are doing
+  utter_engagement_no_sense_explanation:
+  - text: What do they look like when they are performing at their best? They 
+      are going through the motions and they are completely immersed and
+      engaged in what they are doing
+  utter_engagement_note_before_work:
+  - text: Excellent. Let's try and build your engagement
+  utter_engagement_start_a:
+  - text: "Super, let's start by giving an example of engagement in your work. You work can be: a job, a career, a calling, or equivalent"
+  utter_engagement_start_b:
+  - text: What's the difference you might ask ?
+  utter_engagement_start_c:
+  - text: A job is about getting in, getting the job done and getting out, a career
+      is about progressing up the ladder with a focus on the gains that come with
+      this (financial, power etc) When work is a calling you think about it outside
+      of work because it is engaging, meaningful and it gives you a sense of purpose.
+  utter_engagement_work_meaning:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: So, let's talk about how you apply this to a task. Are you interested in
+      hearing this?
+  utter_explain_funding_and_consent:
+  - text: Before we chat more, this ChatPal chatbot was funded by the NPA and the
+      EU ( find out more [here](http://chatpal.interreg-npa.eu/about-the-project/) ),
+      and we would like to get your consent for the project to store and analyse anonymous
+      user interaction data and other data you input through the chatbot. You can
+      find out more, by clicking this link http://chatpal.interreg-npa.eu/participant-information-and-consent/
+      , about the project and about how we analyse user logs. No user is identifiable
+      and it is fully anonymous.
+  # utter_goodbye:
+  # - text: Chat soon, chat pal.
+  utter_great:
+  - text: Great!
+  utter_greet:
+  - text: Hi I'm ChatPal, your mental wellbeing chatbot. I'm here to be your coach
+      and help you discover an effective approach to support your own positive mental
+      wellbeing. I hope that you will be enlightened. :-)
+  utter_happy_to_hear:
+  - buttons:
+    - payload: /moreInfo
+      title: Show me the ideas
+    text: Great! I am happy to hear that. Hope they help you.
+  utter_health_intro:
+  - text: Health, great, let's talk about that! There are many aspects of lifestyle
+      that can positively affect our health...even for bots like me! 🤣
+  utter_meaning_after_story:
+  - text: Ok, let's see if we can work together on something
+  utter_meaning_exit:
+  - text: Great, remember finding greater meaning leads to greater happiness and overall
+      life satisfaction.
+  utter_meaning_intro:
+  - text: Thanks. Finding more meaning in what you do is key to further happiness,
+      motivation and overall life satisfaction.
+  utter_meaning_story:
+  - text: A man approaches three men breaking and shaping rocks. The man asks the
+      first laborer what he is doing. "I'm breaking rocks", the laborer replies. The
+      man asks the second laborer what he is doing and he responds that he is feeding
+      his family, the man then asks the third laborer what he is doing and the laborer
+      responds, "I’m building a cathedral." The third man sees the bigger picture.
+      He is motivated and excited as he feels how what he is doing is for the greater
+      good.
+  utter_meaning_story_love:
+  - text: Great, I love telling stories.
+  utter_meaning_task_write_response:
+  - text: Great, let's try something else. Remember we are trying to find purpose
+      in everyday things.
+  utter_meaning_think_task:
+  - text: Think of something you do that has meaning for you.
+  utter_no_worries:
+  - text: No worries
+  utter_nutrition_explain_fuel_body:
+  # - image: https://media.giphy.com/media/c6W48WwovXHsOGQHsS/giphy-downsized.gif
+  - text: How we fuel our body can have a massive impact on how our body functions
+      and how we feel from day to day. Think of yourself as a racing car, you need
+      to put the right fuel in the car to keep it moving efficiently.
+      
+  utter_nutrition_explain_creating_habits:
+  - text: Creating healthy habits that we can stick to is something that can really
+      help us feel healthy and well.
+  utter_nutrition_no_examples_response:
+  - buttons:
+    - payload: /ready
+      title: I am good to go
+    text: No worries! See if you can think of one simple healthier change to make
+      tomorrow. Remember that Government nutrition guidelines are always a great place
+      to start for reliable facts and information!
+  utter_physical_explain_intensity:
+  - text: Intensity means how hard we are working when we are physically active or
+      exercising. Activities can be mild, moderate or vigorous. Moderate activities
+      increase your breathing and heart rate. You might feel warm but you are still
+      able to carry on a conversation and form sentences! Most physical activities
+      that we do for fun or to improve our health will be in this range !
+  utter_physical_intro:
+  - text: Super! It's great that you are thinking about staying active and motivated
+      in these uncertain times!
+  utter_physical_negative_exit:
+  - text: No worries, you might feel like giving them a go another time.
+  utter_physical_positive_exit:
+  - text: Super! Give it a try and see how it goes. Start small and build from there!
+  utter_physical_recommended_time:
+  - buttons:
+    - payload: /moreInfo
+      title: Tell me more
+    - payload: /deny
+      title: Go Back
+    text: It is recommended that adults should get 30 mins of moderate/vigorous activity
+      5 or more days per week.
+  utter_relationship_give_more_info:
+  - text: It could be something as easy as checking in to say a virtual hello and
+      asking how they are !
+  utter_relationships_can_try_response:
+  - text: Great give it a go. To help me remember I always think of the song by the
+      Supremes. "STOP, in the name of love" 🤣.
+  utter_relationships_cannot_try_response:
+  - text: No worries, it might be something to keep in the back of your mind in future!
+  utter_relationships_consider_positive_response:
+  - text: Brilliant! Kindness can be so powerful. 🙂
+  utter_relationships_exit_phrase:
+  - text: Thanks for chatting today! I hope this will help you.
+  utter_relationships_exit_point:
+  - buttons:
+    - payload: /affirm
+      title: Ok
+    text: So remember, next time you find yourself in a difficult moment with any
+      of your relationships, take a second and 🛑 STOP what you are doing, TAKE 3 deep
+      breaths, OBSERVE your thoughts and feelings and PROCEED to act on something
+      to distract you!
+  utter_relationships_explain_another_way:
+  - text: Another way that can help maintain positive relationships is to be aware
+      of feelings and keep control of them when times are tense.
+  utter_relationships_explain_o:
+  - buttons:
+    - payload: /continueStop
+      title: What about the P?
+    text: The O stands for Observe your thoughts and feelings. Bringing attention
+      to your thoughts and feelings makes you more aware of them
+  utter_relationships_explain_p:
+  - text: The P stands for Proceed to act on something to take you away from where
+      you are currently. Redirect your attention on something else.
+  utter_relationships_explain_random_acts_kindness:
+  - text: One way to feel more connected to others is to consider how we can reach
+      out and be kind. This could be to our families, friends, neighbours, acquaintances,
+      work colleagues or even people we don't know who might benefit from a little
+      kindness.
+  utter_relationships_explain_s:
+  - buttons:
+    - payload: /continueStop
+      title: What about the T?
+    text: The S stands for Stop what you are doing. You get it.
+  utter_relationships_explain_t:
+  # - image: https://media.giphy.com/media/krP2NRkLqnKEg/source.gif
+  - text: The T stands for Take 3 Deep Breaths.
+  utter_relationships_t_exercise:
+  - text: Try three deep breaths there and see how it makes you feel.
+  utter_relationships_hear_response_a:
+  - text: Great, let's do it.
+  utter_relationships_heated_conversation_response_a:
+  # - image: https://media.giphy.com/media/Ps89uHS7n72j6/source.gif
+  - text: We all do it sometimes, we are human after all.... ah ohhh,  well you know
+      what I mean !
+  utter_relationships_heated_conversation_response_b:
+  - text: As the great Dr Viktor E Frankl once said "Between Stimulus and Response
+      There Is a Space. In That Space Is Our Power To Choose Our Response"
+  utter_relationships_heated_conversation_response_c:
+  - text: I know a good acronym developed by Jon Kabat Zinn that will help you the next time you have feelings
+      of frustration and anger.
+  utter_relationships_help_think_someone:
+  - text: That's ok but this exercise can still help you to think about how you could
+      strengthen your relationships using acts of kindness in the future.
+  utter_relationships_intro:
+  - text: OK you picked relationships, so we'll talk about that. Relationships can
+      be complicated but there are small habits we can practice every day that can
+      help us to create positive relationships and feel more connected to others.
+  utter_relationships_introduce_stop:
+  - buttons:
+    - payload: /moreInfo
+      title: Tell me more
+    text: The acronym is STOP.
+  utter_relationships_no_stop_response:
+  - text: Not to worry, maybe another time.
+  utter_relationships_start_random_acts_kindness:
+  - buttons:
+    - payload: /moreInfo
+      title: Tell me more
+    text: Super! 👏 Did you know that "random acts of kindness" can help us to feel
+      more connected to others?
+  utter_relationships_think_someone:
+  - text: Great! Think about someone in your life (it can be anyone) and think about
+      how they might be feeling at this time.
+  utter_reshape_thinking:
+  - text: Great. Let's try and reshape how you think about work.
+  utter_sleep_intro:
+  - text: "Great! The old Irish proverb is worth remembering: \"A good laugh and a\
+      \ long sleep are the two best cures for anything.\" Let's go ahead and chat\
+      \ more about sleep."
+  utter_sleep_explain_average:
+  - text: On average, adults aged 18-64 need between 7-9 hours of sleep per night
+      (but it can vary hugely from person to person). Younger teenagers (14-17 years)
+      may need slightly more (8-10 hours) and older adults aged over 65 may need slightly
+      less (7-8 hours). Either way, sleep is one of the most important aspects of
+      our lifestyle to focus on.
+  utter_sleep_before_tips:
+  - buttons:
+    - payload: /moreInfo
+      title: Show me
+    text: It’s great that you are thinking about this! Here are some helpful tips
+  utter_sleep_tiny_habit_yes:
+  - text: 👏 Super, give it a try and see how it goes. If it works, you could move
+      on to trying one of the others!
+  utter_sleep_chat_other_time:
+  - text: No worries, let's chat about this another time!
+  utter_sleep_negative_exit:
+  - text: No worries, life is busy! Maybe it’s something to think about for the future!
+  utter_ask_consider_activity_sleep:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No
+    text: Would you like to consider another activity in relation to sleep?
+  utter_sleep_useful_action:
+  - text: Super! One useful action that you could take would be to keep a sleep diary!
+  utter_sleep_explain_action:
+  - text: You could have some fun with this! Treat yourself to a nice notebook and
+      keep it just for you. You could take notice of your sleep patterns each day,
+      such as  what time you went to bed, what time you woke up, what time you ate,
+      whether you drank alcohol or had caffeine before bed, how you slept, how you
+      felt whether something was on your mind…..it's up to you!
+  utter_sleep_finish_action:
+  - text: Journaling is a really good way to learn more about ourselves!
+  utter_tip_yes:
+  - text: Super, give it a try and see how it goes.
+  utter_ask_who_cheerful:
+  - buttons:
+    - payload: '/whoChoices{"who_cheerful": "alltime"}'
+      title: All of the time
+    - payload: '/whoChoices{"who_cheerful": "mosttime"}'
+      title: Most of the time
+    - payload: '/whoChoices{"who_cheerful": "morehalftime"}'
+      title: More than half of the time
+    - payload: '/whoChoices{"who_cheerful": "lesshalftime"}'
+      title: Less than half of the time
+    - payload: '/whoChoices{"who_cheerful": "sometime"}'
+      title: Some of the time
+    - payload: '/whoChoices{"who_cheerful": "atnotime"}'
+      title: At no time
+    text: I have felt cheerful and in good spirits
+  utter_ask_who_calm:
+  - buttons:
+    - payload: '/whoChoices{"who_calm": "alltime"}'
+      title: All of the time
+    - payload: '/whoChoices{"who_calm": "mosttime"}'
+      title: Most of the time
+    - payload: '/whoChoices{"who_calm": "morehalftime"}'
+      title: More than half of the time
+    - payload: '/whoChoices{"who_calm": "lesshalftime"}'
+      title: Less than half of the time
+    - payload: '/whoChoices{"who_calm": "sometime"}'
+      title: Some of the time
+    - payload: '/whoChoices{"who_calm": "atnotime"}'
+      title: At no time
+    text: I have felt calm and relaxed
+  utter_ask_who_active:
+  - buttons:
+    - payload: '/whoChoices{"who_active": "alltime"}'
+      title: All of the time
+    - payload: '/whoChoices{"who_active": "mosttime"}'
+      title: Most of the time
+    - payload: '/whoChoices{"who_active": "morehalftime"}'
+      title: More than half of the time
+    - payload: '/whoChoices{"who_active": "lesshalftime"}'
+      title: Less than half of the time
+    - payload: '/whoChoices{"who_active": "sometime"}'
+      title: Some of the time
+    - payload: '/whoChoices{"who_active": "atnotime"}'
+      title: At no time
+    text: I have felt active and vigorous
+  utter_ask_who_fresh:
+  - buttons:
+    - payload: '/whoChoices{"who_fresh": "alltime"}'
+      title: All of the time
+    - payload: '/whoChoices{"who_fresh": "mosttime"}'
+      title: Most of the time
+    - payload: '/whoChoices{"who_fresh": "morehalftime"}'
+      title: More than half of the time
+    - payload: '/whoChoices{"who_fresh": "lesshalftime"}'
+      title: Less than half of the time
+    - payload: '/whoChoices{"who_fresh": "sometime"}'
+      title: Some of the time
+    - payload: '/whoChoices{"who_fresh": "atnotime"}'
+      title: At no time
+    text: I woke up feeling fresh and rested
+  utter_ask_who_filled:
+  - buttons:
+    - payload: '/whoChoices{"who_filled": "alltime"}'
+      title: All of the time
+    - payload: '/whoChoices{"who_filled": "mosttime"}'
+      title: Most of the time
+    - payload: '/whoChoices{"who_filled": "morehalftime"}'
+      title: More than half of the time
+    - payload: '/whoChoices{"who_filled": "lesshalftime"}'
+      title: Less than half of the time
+    - payload: '/whoChoices{"who_filled": "sometime"}'
+      title: Some of the time
+    - payload: '/whoChoices{"who_filled": "atnotime"}'
+      title: At no time
+    text: My daily life has been filled with things that interest me
+  utter_ask_gratefulReasonA:
+  - text: "Your turn.\nI am grateful for ________________.\nPlease type answer"
+  utter_ask_gratefulReasonB:
+  - text: "Your turn {name}.\nI am grateful for ________________.\nPlease type answer"
+  utter_end_permah_option:
+  - text: "Thank you for engaging with me on {selectedPermah}! Let's go back to the Main Menu now"
+  utter_onboarding_not_know_more_response:
+  - text: "Not a problem, if you change your mind please come back and just say Hi."
+actions:
+- action_ask_health_topic # ADDED
+- action_emotion_explain_question
+- action_engagement_actionable_behaviours
+- action_list_physical_ideas
+- action_reset_slots
+- action_find_meaning_in_things
+- action_show_menu  # ADDED
+- action_reset_who_slots # ADDED
+- action_reset_name
+- action_accomplishment_check_all_good
+- action_accomplishment_next_task
+- action_check_session_start_slots
+- action_explain_behaviour_change
+- action_tell_more
+- action_give_change_examples
+- action_explain_sleep_important
+- action_give_sleep_tips
+- action_explain_sleep_activity
+- utter_under_18_response
+- utter_end_permah_option
+- utter_accomplishment_action_positive_response
+- utter_accomplishment_exit_point
+- utter_accomplishment_explain_first_task_a
+- utter_accomplishment_explain_first_task_b
+- utter_accomplishment_explain_second_task
+- utter_accomplishment_give_exercise_advice
+- utter_accomplishment_intro
+- utter_accomplishment_love_energy
+- utter_accomplishment_super
+- utter_ask_about_attitude
+- utter_ask_accomplishment_second_task
+- utter_ask_accomplishment_think_action
+- utter_ask_ageRange
+- utter_ask_all_good
+- utter_ask_consent
+- utter_ask_continue
+- utter_ask_country
+- utter_ask_details
+- utter_ask_feeling
+- utter_ask_firstStrength
+- utter_ask_gender
+- utter_ask_get_happier
+- utter_ask_get_pen
+- utter_ask_got_one
+# - utter_ask_health_topic
+- utter_ask_hear_questions
+- utter_ask_heated_conversation
+- utter_ask_in_mind
+- utter_ask_know_more
+- utter_ask_make_sense
+- utter_ask_meaning_apply_to_me
+- utter_ask_meaningChange
+- utter_ask_meaning_list
+- utter_ask_passion
+- utter_ask_passionResult
+- utter_ask_meaning_story
+- utter_ask_name
+- utter_ask_neutral_to_happy
+- utter_ask_next_task
+- utter_ask_nutrition_commit_diet
+- utter_ask_nutritionRating
+- utter_ask_permah
+- utter_ask_permah_short
+- utter_ask_physical_ideas
+- utter_ask_physical_intensity
+- utter_ask_physical_per_day
+- utter_ask_physical_try_one_idea
+- utter_ask_ready_for_o
+- utter_ask_relationships_can_do_something
+- utter_ask_relationships_hear_another_way
+- utter_ask_relationships_tip
+- utter_ask_sad_to_happy
+- utter_ask_secondStrength
+- utter_ask_amountSleep
+- utter_ask_small_change
+- utter_ask_someone_could_benefit_act
+- utter_ask_something_can_try
+- utter_ask_something_consider
+- utter_ask_tiny_habits
+- utter_ask_to_know_behaviour_change
+- utter_ask_to_know_one_way
+- utter_ask_try_one_more
+- utter_ask_want_to_hear
+- utter_ask_would_like_to_try
+- utter_chosen_permah
+- utter_consent_negative_response
+- utter_consent_positive_response
+- utter_default
+- utter_emotion_exit_point
+# - utter_emotion_explain_questions
+- utter_emotion_get_happier_response
+- utter_emotion_grateful_reason_a
+- utter_emotion_grateful_reason_b
+- utter_emotion_grateful_response
+- utter_emotion_intro
+# - utter_emotion_neutral_to_happy_response
+- utter_emotion_no_questions_response
+- utter_emotion_not_get_happier_response
+- utter_emotion_not_trying_again
+# - utter_emotion_sad_to_happy_response
+- utter_emotion_start_task
+# - utter_engagement_actionable_behaviours
+- utter_engagement_choice_response
+- utter_engagement_energise_a
+- utter_engagement_energise_b
+- utter_engagement_energise_c
+- utter_engagement_exit_point
+- utter_engagement_give_another_example
+- utter_engagement_giving_go
+- utter_engagement_intro
+- utter_engagement_meaning_purpose
+- utter_engagement_no_sense_explanation
+- utter_engagement_note_before_work
+- utter_engagement_start_a
+- utter_engagement_start_b
+- utter_engagement_start_c
+- utter_engagement_work_meaning
+- utter_engagement_not_got_one
+- utter_explain_funding_and_consent
+- utter_goodbye
+- utter_great
+- utter_greet
+- utter_happy_to_hear
+- utter_health_intro
+- utter_meaning_after_story
+- utter_meaning_exit
+- utter_meaning_intro
+- utter_meaning_story
+- utter_meaning_story_love
+- utter_meaning_task_write_response
+# - utter_meaning_things_to_find
+- utter_meaning_think_task
+- utter_no_worries
+- utter_nutrition_explain_fuel_body
+- utter_nutrition_explain_creating_habits
+- utter_nutrition_no_examples_response
+- utter_physical_explain_intensity
+# - utter_physical_ideas
+- utter_physical_intro
+- utter_physical_negative_exit
+- utter_physical_positive_exit
+- utter_physical_recommended_time
+- utter_relationship_give_more_info
+- utter_relationships_can_try_response
+- utter_relationships_cannot_try_response
+- utter_relationships_consider_positive_response
+- utter_relationships_exit_phrase
+- utter_relationships_exit_point
+- utter_relationships_explain_another_way
+- utter_relationships_explain_o
+- utter_relationships_explain_p
+- utter_relationships_explain_random_acts_kindness
+- utter_relationships_explain_s
+- utter_relationships_explain_t
+- utter_relationships_hear_response_a
+- utter_relationships_heated_conversation_response_a
+- utter_relationships_heated_conversation_response_b
+- utter_relationships_heated_conversation_response_c
+- utter_relationships_help_think_someone
+- utter_relationships_intro
+- utter_relationships_introduce_stop
+- utter_relationships_no_stop_response
+- utter_relationships_start_random_acts_kindness
+- utter_relationships_think_someone
+- utter_reshape_thinking
+- utter_sleep_intro
+- utter_sleep_explain_average
+- utter_sleep_before_tips
+- utter_sleep_tiny_habit_yes
+- utter_sleep_chat_other_time
+- utter_sleep_negative_exit
+- utter_tip_yes
+- utter_ask_who_cheerful
+- utter_ask_who_calm
+- utter_ask_who_active
+- utter_ask_who_fresh
+- utter_ask_who_filled
+- utter_ask_hear_more
+- utter_nutrition_hard
+- utter_ask_consider_change
+- utter_ask_nutrition_examples
+- utter_nutrition_positive_exit
+- utter_nutrition_negative_exit
+- utter_nutrition_not_hear_response
+- utter_ask_know_why
+# - utter_ask_consider_activity
+- utter_exit_best_luck
+- utter_ask_who_choices
+- utter_who_explain
+- utter_who_more_info
+- utter_who_score_exit
+- utter_meaning_skip_story
+- utter_sleep_useful_action
+- utter_sleep_explain_action
+- utter_sleep_finish_action
+- utter_ask_gratefulReasonA
+- utter_ask_gratefulReasonB
+- utter_exit
+- utter_relationships_t_exercise
+- utter_onboarding_not_know_more_response
+- utter_emotion_sad_response
+- utter_emotion_cannot_recognise_everything
+forms:
+- user_ageRange_form  # ADDED
+- user_meaning_change_form
+- user_passion_form
+- user_name_form
+- first_strength_form
+- second_strength_form
+- user_details_form
+- who_form
+- get_amount_sleep_form
+- get_nutrition_rating_form
+- first_grateful_reason_form
+- second_grateful_reason_form
